@@ -1,0 +1,71 @@
+ body { 
+    font-family: Arial, sans-serif; 
+    text-align: center; 
+    margin-top: 50px; 
+    background-color: rgb(201, 163, 117);
+    }
+    
+
+ #count { 
+    font-size: 2em; 
+    margin-bottom: 20px; 
+ }
+       
+
+#cookieBtn { 
+    font-size: 1.5em; 
+    padding: 10px 30px; 
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+
+
+#cookieBtn {
+font-size: 1.5em;
+padding: 10px 30px;
+cursor: pointer;
+transition: transform 0.1s;
+}
+
+#cookieBtn.clicked {
+    animation: pop 0.2s;
+}
+
+@keyframes pop {
+    0%   { transform: scale(1); }
+    50%  { transform: scale(1.2); }
+    100% { transform: scale(1); }
+}
+
+#playerName {
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: none;
+    padding: 8px;
+    border-radius: 15px;
+    font-size: 1em;
+    margin-bottom: 50px;
+}
+
+.cookie-center-wrapper {
+    position: relative;
+    width: fit-content;
+    margin: 0 auto;
+}
+
+.cookie-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-buttons {
+    position: absolute;
+    top: 30%;
+    right: 200px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: flex-start;
+}
