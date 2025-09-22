@@ -4,11 +4,11 @@ const btn = document.getElementById('cookieBtn');
 const shopBtn = document.getElementById('shopBtn');
 const multiplierBtn = document.getElementById('multiplierBtn');
 const cpsDiv = document.getElementById('cps');
-const AutoRate = 1000; // elke seconde
+const AutoRate = 1000; // every second
 let multiplier = 1;
-let multiplierCost = 10;
-let autoClickerCost = 5;
-let autoClickerCount = 0; // Track number of autoclickers
+let multiplierCost = 100;
+let autoClickerCost = 25;
+let autoClickerCount = 0;
 
 // Cookie button
 btn.addEventListener('click', function() {
@@ -18,43 +18,43 @@ btn.addEventListener('click', function() {
     setTimeout(() => btn.classList.remove('clicked'), 200);
 });
 
-// Shop button -> koop AutoClicker (meerdere keren mogelijk)
+// Shop button -> buy AutoClicker (multiple purchases possible)
 shopBtn.addEventListener('click', function() {
     if (count >= autoClickerCost) {
         count -= autoClickerCost;
         updateCount();
 
-        autoClickerCount++; // Increment autoclicker count
-        updateCPS(); // Update CPS display
+        autoClickerCount++;
+        updateCPS();
 
-        // Start een nieuwe interval voor deze autoclicker
+        // Start a new interval for this autoclicker
         setInterval(() => {
             count += multiplier;
             updateCount();
         }, AutoRate);
 
-        // Prijs verdubbelt
-        autoClickerCost *= 2;
-        shopBtn.textContent = `🛒 Koop AutoClicker (${autoClickerCost})`;
+        // Price increases
+        autoClickerCost = Math.floor(autoClickerCost * 1.15);
+        shopBtn.innerHTML = `🤖 Auto Clicker<br><small>Clicks the cookie automatically<br>Cost: ${autoClickerCost} cookies</small>`;
 
-        alert("Nieuwe AutoClicker gekocht!");
+        alert("New Auto Clicker purchased!");
     } else {
-        alert("Je hebt minimaal " + autoClickerCost + " cookies nodig!");
+        alert("You need at least " + autoClickerCost + " cookies!");
     }
 });
 
-// Multiplier button -> verdubbelt multiplier
+// Multiplier button -> doubles multiplier
 multiplierBtn.addEventListener('click', function() {
     if (count >= multiplierCost) {
         count -= multiplierCost;
         multiplier *= 2;
-        multiplierCost *= 2;
+        multiplierCost = Math.floor(multiplierCost * 2.5);
         updateCount();
 
-        multiplierBtn.textContent = `✨ Koop Multiplier (${multiplierCost})`;
-        alert("Multiplier gekocht! Je cookies tellen nu x" + multiplier);
+        multiplierBtn.innerHTML = `✨ Click Multiplier<br><small>Doubles your clicking power<br>Cost: ${multiplierCost} cookies</small>`;
+        alert("Multiplier purchased! Your cookies now count x" + multiplier);
     } else {
-        alert("Je hebt minimaal " + multiplierCost + " cookies nodig!");
+        alert("You need at least " + multiplierCost + " cookies!");
     }
 });
 
